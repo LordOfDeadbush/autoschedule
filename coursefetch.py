@@ -32,6 +32,5 @@ def get_courses(name): #gets all crns and calls course info for each one
     coursedata.update({"Rating": rating})
     return coursedata
 
-print(get_courses(["MATH", "2A"]))
 
 
