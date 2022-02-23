@@ -134,6 +134,6 @@ class Class:
 #TESTING CODE
 
 
-course = Class({"CRN":40091,"raw_course":"ART F001.01Y","dept":"ART","course":"1","section":"01Y","title":"Introduction to Art","units":4.5,"start":"04/04/2022","end":"06/24/2022","times":[{"type":"Lecture","days":"TTh","start_time":"10:00 AM","end_time":"11:50 AM","instructor":["Cynthia Aurora Brannvall"],"location":"Foothill, Main Campus 5015"},{"type":"Lab","days":"TBA","start_time":"TBA","end_time":"TBA","instructor":["Cynthia Aurora Brannvall"],"location":"Foothill, Main Campus ONLINE"}],"status":"open","seats":49,"wait_seats":10,"wait_cap":10, "rating": 3.0})
+# course = Class({"CRN":40091,"raw_course":"ART F001.01Y","dept":"ART","course":"1","section":"01Y","title":"Introduction to Art","units":4.5,"start":"04/04/2022","end":"06/24/2022","times":[{"type":"Lecture","days":"TTh","start_time":"10:00 AM","end_time":"11:50 AM","instructor":["Cynthia Aurora Brannvall"],"location":"Foothill, Main Campus 5015"},{"type":"Lab","days":"TBA","start_time":"TBA","end_time":"TBA","instructor":["Cynthia Aurora Brannvall"],"location":"Foothill, Main Campus ONLINE"}],"status":"open","seats":49,"wait_seats":10,"wait_cap":10, "rating": 3.0})
 
-print(course.toString())
+# print(course.toString())
