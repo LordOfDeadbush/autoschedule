@@ -15,4 +15,13 @@ from coursefetch import *
 from courses import *
 
 
-# will put clientside code here
+def get_courses_formatted(s):
+    l = get_courses_from_input(s)
+    #courses = [Class(i) for i in courses]
+    courses = []
+    for i in l:
+        for j in i:
+            courses.append(Class(j))
+    return courses
+
+print("\n".join([i.toString() for i in get_courses_formatted("CS 2A")]))
