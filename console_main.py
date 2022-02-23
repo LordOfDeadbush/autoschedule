@@ -8,7 +8,7 @@ but I am expecting this to be added on to an existing bot.
 '''
 
 from coursefetch import *
-from schedulemaker import *
+from courses import *
 
 
 # will put clientside code here
