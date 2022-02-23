@@ -73,6 +73,11 @@ class Class:
     times = [Classtime(0, 0)] # array of ClassTimes
     _data = {} # all data that we don't need until to_string is kept here
 
+    def __init__(self, data):
+        self._data = data
+        self.set_times()
+        return
+
     def check_for_conflict(self, other): #true means there is no conflict
         for i in self.times:
             if i._start == 0 and i._end == 0:
@@ -95,6 +100,5 @@ class Class:
                 self.times.append(Classtime(time_to_decimal(lecture["start_time"]), time_to_decimal(lecture["end_time"]), poss_days.find(day)))
         
         return
-
 
 
