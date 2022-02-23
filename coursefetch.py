@@ -1,7 +1,7 @@
 import requests;
 
-def format_input(input): # input should be formatted as "MATH 1A, PSYCH 2B..."
-    classes = input.split(", ") # seperates multiple course names
+def format_input(input): # input should be formatted as "MATH 1A,PSYCH 2B..."
+    classes = input.split(",") # seperates multiple course names
     classes = [i.split(" ") for i in classes] # seperates MATH from 1A
     return classes
 
@@ -33,5 +33,14 @@ def get_courses(name): #gets all crns and calls course info for each one
         i.update({"rating": rating})
     return coursedata
 
+def get_courses_from_input(s):
+    input = format_input(s)
+    output = [get_courses(i) for i in input]
+    return output
 
-print(get_courses(["CS","2A"]))
+
+################################################
+# testing functions
+
+
+# print(get_courses_from_input("MATH 1A"))
