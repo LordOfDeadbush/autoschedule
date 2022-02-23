@@ -19,43 +19,59 @@ would branch but tbh im too lazy
 from ast import Constant
 
 
+
+
+def time_to_decimal(s):
+    if not ("AM" in s and s[0:1] == "12"):
+        time += int(s[0:1])
+    time += float(s[3:4]) / 60
+    if "PM" in s:
+        time += 12
+    return time
+
+
+class Classtime:
+    # 0 to 0 will be an async class
+    _day = -1 # 0 is async, 1-7 are days of week (sunday can only be accessed manually as of right now)
+    _start = 0 # represented as number between 0 and 24 (exclusive) with a decimal
+    _end = 0
+    days = ["Async", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    def __init__(self, start = 0, end = 0, day = 0):
+        self._start = float(start)
+        self._end = float(end)
+        self._day = int(day)
+        
+    def toString(self): # TODO: make it do 00 if the hour is on the hour
+        if self._start == 0 and self._end == 0:
+            return "ASYNC"
+        day = self.days[self._day]
+        startHour = int(self._start)
+        startMin = int((self._start * 60) % 60)
+        endHour = int(self._end)
+        endMin = int((self._end * 60) % 60)
+        if startMin == 0:
+            startMin = "00"
+        if endMin == 0:
+            endMin = "00"
+        return day + ", " + str(startHour) + ":" + str(startMin) + " -> " + str(endHour) + ":" + str(endMin)
+
+    def has_overlap(self, other):
+        if self._day != other.day:
+            return False
+        if self._start == 0 and self._end == 0:
+            return False
+        if other._start == 0 and other._end == 0:
+            return False   
+        if self._start > other._end:
+            return False
+        if other._start > self._end:
+            return False
+        return True
+
+
 class Class:
-    class Classtime:
-        # 0 to 0 will be an async class
-        _day = -1 # -1 is async, 0-6 are days of week
-        _start = 0 # represented as number between 0 and 24 (exclusive) with a decimal
-        _end = 0
-        days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-        def __init__(self, start = 0, end = 0, day = 0):
-            self._start = float(start)
-            self._end = float(end)
-            self._day = int(day)
-            
-        def toString(self):
-            if self.start == 0 and self.end == 0:
-                return "ASYNCHRONOUS"
-            day = self.days[self._day]
-            startHour = int(self.start)
-            startMin = (self.start * 60) % 60
-            endHour = int(self.end)
-            endMin = (self.end * 60) % 60
-            return day + " , " + str(startHour) + ":" + str(startMin) + " -> " + str(endHour) + ":" + str(endMin)
-
-        def has_overlap(self, other):
-            if self._day != other.day:
-                return False
-            if self._start == 0 and self._end == 0:
-                return False
-            if other._start == 0 and other._end == 0:
-                return False   
-            if self._start > other._end:
-                return False
-            if other._start > self._end:
-                return False
-            return True
-
     times = [Classtime(0, 0)] # array of ClassTimes
-    data = {} # all data that we don't need until to_string is kept here
+    _data = {} # all data that we don't need until to_string is kept here
 
     def check_for_conflict(self, other): #true means there is no conflict
         for i in self.times:
@@ -65,4 +81,20 @@ class Class:
                 if (i.has_overlap(j)):
                     return False
         return True
-    
+
+    def set_times(self):
+        days = ""
+        poss_days = "AMTWHFS"
+        for lecture in self._data["times"]:
+            days = lecture["days"]
+            if days == "TBA":
+                self.times = [self.Classtime()]
+                continue
+            days = days.replace("Th","H")
+            for day in days:
+                self.times.append(Classtime(time_to_decimal(lecture["start_time"]), time_to_decimal(lecture["end_time"]), poss_days.find(day)))
+        
+        return
+
+
+
