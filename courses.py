@@ -108,7 +108,7 @@ class Class:
     def toString(self):
         # displays as follows: (with dummy values)
         #######################################################
-        # 123456 CS 2A: Object Oriented C++
+        # 123456 CS 2A: Object Oriented C++ (6.0 units)
         # John Doe - 3.5 / 5 on RMP (0 means no data found)
         # times: [Classtime toString]
         #    [Mon, 12:00 -> 15:30] ..... Lecture @ Foothill, Main Campus 5015
@@ -117,7 +117,7 @@ class Class:
         #######################################################
         returnstring = ""
         data = self._data
-        returnstring += str(data["CRN"]) + " " + data["dept"] + " " + data["course"] + ": " + data["title"] + " \n"
+        returnstring += str(data["CRN"]) + " " + data["dept"] + " " + data["course"] + ": " + data["title"] + " (" + str(data["units"])+" units) \n"
         returnstring += data['times'][0]['instructor'][0] + " - " + str(self._rating) + " / 5 on RMP (0 means no data found) \n"
         returnstring += "times: \n"
         for i in self.times:
@@ -134,6 +134,6 @@ class Class:
 #TESTING CODE
 
 
-#course = Class({"CRN":40091,"raw_course":"ART F001.01Y","dept":"ART","course":"1","section":"01Y","title":"Introduction to Art","units":4.5,"start":"04/04/2022","end":"06/24/2022","times":[{"type":"Lecture","days":"TTh","start_time":"10:00 AM","end_time":"11:50 AM","instructor":["Cynthia Aurora Brannvall"],"location":"Foothill, Main Campus 5015"},{"type":"Lab","days":"TBA","start_time":"TBA","end_time":"TBA","instructor":["Cynthia Aurora Brannvall"],"location":"Foothill, Main Campus ONLINE"}],"status":"open","seats":49,"wait_seats":10,"wait_cap":10, "rating": 3.0})
+course = Class({"CRN":40091,"raw_course":"ART F001.01Y","dept":"ART","course":"1","section":"01Y","title":"Introduction to Art","units":4.5,"start":"04/04/2022","end":"06/24/2022","times":[{"type":"Lecture","days":"TTh","start_time":"10:00 AM","end_time":"11:50 AM","instructor":["Cynthia Aurora Brannvall"],"location":"Foothill, Main Campus 5015"},{"type":"Lab","days":"TBA","start_time":"TBA","end_time":"TBA","instructor":["Cynthia Aurora Brannvall"],"location":"Foothill, Main Campus ONLINE"}],"status":"open","seats":49,"wait_seats":10,"wait_cap":10, "rating": 3.0})
 
-#print(course.toString())
+print(course.toString())
