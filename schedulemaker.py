@@ -50,7 +50,7 @@ class Classtime:
         startMin = int((self._start * 60) % 60)
         endHour = int(self._end)
         endMin = int((self._end * 60) % 60)
-        if startMin == 0:
+        if startMin == 0: #TODO: make this for all 1 digit numbers, possibly make a new function
             startMin = "00"
         if endMin == 0:
             endMin = "00"
