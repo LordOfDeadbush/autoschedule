@@ -30,7 +30,7 @@ def get_courses(name): #gets all crns and calls course info for each one
     coursedata = [get_course_info(i) for i in data["classes"]]
     for i in coursedata:
         rating = get_RMP(i['times'][0]['instructor'][0]) # TODO: fix this its not working aaaaaaaaaaaa
-        i.update({"Rating": rating})
+        i.update({"rating": rating})
     return coursedata
 
 
