@@ -1,10 +1,14 @@
 '''
-this is the main application file, which will be the one that people run. 
-gotta put some spicy memes in here!
+Alright. This is the SAUCE. the place where all the shit happens. The program you actually use to make the schedule. Finally. 
+The functions in this file will:
+ - make all possible schedules from an input (via coursefetch & courses)
+ - validate the schedules, thinning the herd from the last item in this list
+ - analyze the "worth" of each schedule based on weight and RMP score
+ - get the best schedule
 
-this will be the one run from console, 
-might make a discord bot as well for testing purposes, 
-but I am expecting this to be added on to an existing bot.
+see https://en.m.wikipedia.org/wiki/Knapsack_problem for how some of this works
+
+
 '''
 
 from coursefetch import *
