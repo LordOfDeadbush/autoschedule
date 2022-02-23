@@ -7,8 +7,8 @@ might make a discord bot as well for testing purposes,
 but I am expecting this to be added on to an existing bot.
 '''
 
-import coursefetch 
-import schedulemaker 
+from coursefetch import *
+from schedulemaker import *
 
 
 # will put clientside code here
