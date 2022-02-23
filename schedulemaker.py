@@ -42,7 +42,7 @@ class Classtime:
         self._end = float(end)
         self._day = int(day)
         
-    def toString(self): # TODO: make it do 00 if the hour is on the hour
+    def toString(self): 
         if self._start == 0 and self._end == 0:
             return "ASYNC"
         day = self.days[self._day]
@@ -50,10 +50,10 @@ class Classtime:
         startMin = int((self._start * 60) % 60)
         endHour = int(self._end)
         endMin = int((self._end * 60) % 60)
-        if startMin == 0: #TODO: make this for all 1 digit numbers, possibly make a new function
-            startMin = "00"
-        if endMin == 0:
-            endMin = "00"
+        if startMin < 10: 
+            startMin = "0" + str(startMin)
+        if endMin < 10: 
+            endMin = "0" + str(endMin)
         return day + ", " + str(startHour) + ":" + str(startMin) + " -> " + str(endHour) + ":" + str(endMin)
 
     def has_overlap(self, other):
