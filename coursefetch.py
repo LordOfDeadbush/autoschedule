@@ -28,9 +28,10 @@ def get_courses(name): #gets all crns and calls course info for each one
     r = requests.get("https://opencourse.dev/fh/depts/" + name[0].upper() + "/courses/" + name[1].upper())
     data = r.json()
     coursedata = [get_course_info(i) for i in data["classes"]]
-    rating = get_RMP(coursedata['times'][0]['instructor'][0]) # TODO: fix this its not working aaaaaaaaaaaa
-    coursedata.update({"Rating": rating})
+    for i in coursedata:
+        rating = get_RMP(i['times'][0]['instructor'][0]) # TODO: fix this its not working aaaaaaaaaaaa
+        i.update({"Rating": rating})
     return coursedata
 
 
-
+print(get_courses(["CS","2A"]))
