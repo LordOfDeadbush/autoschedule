@@ -116,7 +116,7 @@ class Class: #TODO: fix error with classtimes leaking over
         returnstring = ""
         data = self._data
         returnstring += str(data["CRN"]) + " " + data["dept"] + " " + data["course"] + ": " + data["title"] + " (" + str(data["units"])+" units) \n"
-        returnstring += data['times'][0]['instructor'][0] + " - " + str(self._rating) + " / 5 on RMP (0 means no data found) \n"
+        returnstring += data['times'][0]['instructor'][0] + " - " + str(self._rating) + " / 5.0 on RMP (0 means no data found) \n"
         returnstring += "times: \n"
         for i in self.times:
             s = i[0].toString()
