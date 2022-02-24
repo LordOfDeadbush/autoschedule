@@ -12,6 +12,7 @@ see https://en.m.wikipedia.org/wiki/Knapsack_problem for how some of this works
 '''
 
 from re import T
+import sched
 from coursefetch import *
 from courses import *
 
@@ -37,7 +38,10 @@ class Schedule:
         denominator = 0
         for i in self._classes:
             score += i._rating
-            denominator += i._data["units"]
+            #print(i.toString())
+            denominator += float(i._data["units"])
+        if denominator == 0:
+            return 0
         return float(score) / float(denominator)
 
     def toString(self):
@@ -77,7 +81,16 @@ def make_all_possible_schedules(s):
     schedules = [Schedule(i) for i in combinations]
     return schedules
     
-
+def get_optimal_schedule(s):
+    schedules = make_all_possible_schedules(s)
+    best = schedules[0]
+    for i in schedules: #all schedules
+        if not i._possible:
+            continue
+        if i._score > best._score:
+            i = best
+            continue
+    return best
 
 ###########################################
 # TEST CODE
@@ -92,4 +105,6 @@ def make_all_possible_schedules(s):
 #sched = Schedule([Class(i) for i in courselist])
 #print(sched.toString())
 
-print("\n".join([i.toString() for i in make_all_possible_schedules("MATH 1A,CS 2A")]))
+# print("\n".join([i.toString() for i in make_all_possible_schedules("MATH 1A,CS 2A")]))
+
+# print(get_optimal_schedule("MATH 1A,CS 2A").toString())
