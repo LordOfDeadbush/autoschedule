@@ -11,6 +11,7 @@ see https://en.m.wikipedia.org/wiki/Knapsack_problem for how some of this works
 
 '''
 
+from re import T
 from coursefetch import *
 from courses import *
 
@@ -50,18 +51,31 @@ class Schedule:
 def get_courses_formatted(s):
     l = get_courses_from_input(s)
     courses = []
-    for i in l:
-        for j in i:
+    for i in range(len(l)):
+        for j in range(len(l[i])):
             # courses.append(Class(j))
-            j = Class(j)
+            l[i][j] = Class(l[i][j])
 
     return l
 
 def make_all_possible_schedules(s):
     courses = get_courses_formatted(s)
     combinations = []
+    combinations2 = []
     schedules = []
-    #TODO loop shenanigans
+    for i in courses:
+        if combinations == []:
+            combinations = [[j] for j in i]
+            continue
+        for j in combinations:
+            for k in i:
+                temp = j[:]
+                temp.append(k)
+                combinations2.append(temp)
+        combinations = combinations2[:]
+        combinations2.clear()
+    schedules = [Schedule(i) for i in combinations]
+    return schedules
     
 
 
@@ -77,3 +91,5 @@ def make_all_possible_schedules(s):
 
 #sched = Schedule([Class(i) for i in courselist])
 #print(sched.toString())
+
+print("\n".join([i.toString() for i in make_all_possible_schedules("MATH 1A,CS 2A")]))
