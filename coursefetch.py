@@ -25,7 +25,10 @@ def get_RMP(teacher):
     try:
         rating = float(s[index+11:index+14]) # if this doesnt work return 0
     except ValueError:
-        return 0
+        try:
+            rating = float(s[index+11]) 
+        except ValueError:
+            return 0           
     return rating
 
 def get_course_info(crn): # gets all course info and returns in dictionary
