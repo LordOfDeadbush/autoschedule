@@ -17,7 +17,7 @@ from courses import *
 
 def get_courses_formatted(s):
     l = get_courses_from_input(s)
-    #courses = [Class(i) for i in courses]
+    print(l)
     courses = []
     for i in l:
         for j in i:
@@ -29,4 +29,4 @@ def get_courses_formatted(s):
 ###########################################
 # TEST CODE
 
-# print("\n".join([i.toString() for i in get_courses_formatted("CS 2A")]))
+# print("\n".join([i.toString() for i in get_courses_formatted("MATH 1D")]))
