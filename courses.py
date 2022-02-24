@@ -123,7 +123,8 @@ class Class:
         for i in self.times:
             s = i[0].toString()
             if s == "ASYNC":
-                returnstring +=  "   " + s + " \n"
+                if i[1] == 0:
+                    returnstring +=  "   " + s + " \n"
             else:
                 returnstring += "   " + s + " ..... " + data["times"][i[1]]["type"] + " @ " + data["times"][i[1]]["location"] + " \n"
         return returnstring

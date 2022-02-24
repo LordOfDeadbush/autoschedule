@@ -24,4 +24,9 @@ def get_courses_formatted(s):
             courses.append(Class(j))
     return courses
 
-print("\n".join([i.toString() for i in get_courses_formatted("CS 2A")]))
+
+
+###########################################
+# TEST CODE
+
+# print("\n".join([i.toString() for i in get_courses_formatted("CS 2A")]))
