@@ -55,7 +55,7 @@ class Classtime:
         return day + ", " + str(startHour) + ":" + str(startMin) + " -> " + str(endHour) + ":" + str(endMin)
 
     def has_overlap(self, other):
-        if self._day != other.day:
+        if self._day != other._day:
             return False
         if self._start == 0 and self._end == 0:
             return False
