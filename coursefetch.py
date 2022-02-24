@@ -5,8 +5,15 @@ def format_input(input): # input should be formatted as "MATH 1A,PSYCH 2B..."
     classes = [i.split(" ") for i in classes] # seperates MATH from 1A
     return classes
 
+def remove_middle_name(fullName):
+    name = fullName.split(" ")
+    newName = name[0] + " " + name[-1]
+    #print(newName)
+    return newName
+
 def get_RMP(teacher):
     #will break if multiple teachers have the same name but fuck you anyways
+    teacher = remove_middle_name(teacher)
     teacher = teacher.replace(" ", "%20")
     r = requests.get("https://www.ratemyprofessors.com/search/teachers?query=" + teacher + "&sid=U2Nob29sLTE1ODE=")
     s = r.text
@@ -15,7 +22,10 @@ def get_RMP(teacher):
         return 0
     if (s[index+11] == '0'): 
         return 0
-    rating = float(s[index+11:index+14]) # if this doesnt work return 0
+    try:
+        rating = float(s[index+11:index+14]) # if this doesnt work return 0
+    except ValueError:
+        return 0
     return rating
 
 def get_course_info(crn): # gets all course info and returns in dictionary

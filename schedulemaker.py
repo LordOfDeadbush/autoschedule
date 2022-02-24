@@ -107,4 +107,4 @@ def get_optimal_schedule(s):
 
 # print("\n".join([i.toString() for i in make_all_possible_schedules("MATH 1A,CS 2A")]))
 
-# print(get_optimal_schedule("MATH 1A,CS 2A").toString())
+print(get_optimal_schedule("ECON 1A,CS 2A,ENGL 1B").toString())
