@@ -32,7 +32,7 @@ def time_to_decimal(s):
     return time
 
 
-class Classtime:
+class Classtime: 
     # 0 to 0 will be an async class
     _day = -1 # 0 is async, 1-7 are days of week (sunday can only be accessed manually as of right now)
     _start = 0 # represented as number between 0 and 24 (exclusive) with a decimal
@@ -71,7 +71,7 @@ class Classtime:
         return True
 
 
-class Class:
+class Class: #TODO: fix error with classtimes leaking over
     times = [] # array of ClassTimes
     _data = {} # all data that we don't need until to_string is kept here
     _rating = 0
