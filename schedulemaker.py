@@ -57,6 +57,12 @@ def get_courses_formatted(s):
 
     return l
 
+def make_all_possible_schedules(s):
+    courses = get_courses_formatted(s)
+    combinations = []
+    schedules = []
+    #TODO loop shenanigans
+    
 
 
 ###########################################
