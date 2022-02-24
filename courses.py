@@ -27,7 +27,7 @@ def time_to_decimal(s):
     if time == 12:
         time -= 12
     time += float(s[3:5]) / 60
-    if "PM" in s:
+    if "PM" in s and time < 12:
         time += 12
     return time
 
