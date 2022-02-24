@@ -34,9 +34,6 @@ def time_to_decimal(s):
 
 class Classtime: 
     # 0 to 0 will be an async class
-    _day = -1 # 0 is async, 1-7 are days of week (sunday can only be accessed manually as of right now)
-    _start = 0 # represented as number between 0 and 24 (exclusive) with a decimal
-    _end = 0
     days = ["Async", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     def __init__(self, start = 0, end = 0, day = 0):
         self._start = float(start)
@@ -72,12 +69,13 @@ class Classtime:
 
 
 class Class: #TODO: fix error with classtimes leaking over
-    times = [] # array of ClassTimes
-    _data = {} # all data that we don't need until to_string is kept here
-    _rating = 0
+    #times = [] # array of ClassTimes
+    #_data = {} # all data that we don't need until to_string is kept here
+    #_rating = 0
 
     def __init__(self, data):
         self._data = data
+        self.times = []
         self._rating = data["rating"]
         self.set_times()
         return
