@@ -12,3 +12,8 @@ As of right now, the only thing working is coursefetch.py. will get schedulemake
 
 check this out too! https://github.com/ogvenocity/Optimal-Schedule-Maker-
 
+# What it does
+
+WARNING: This does not work anymore due to the opencourse API no longer being maintained. 
+
+This will create a class schedule for a Foothill student using data from the course schedule and RateMyProfessor in order to achieve an optimal schedule.
