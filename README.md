@@ -1,4 +1,4 @@
-# autoschedule
+# autoschedule - DEPRICIATED
  
 use python -m pip install requests to install requests, the only dependancy at this time.
 
